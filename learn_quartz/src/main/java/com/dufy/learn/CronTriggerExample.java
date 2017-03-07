@@ -25,6 +25,7 @@ import static org.quartz.TriggerBuilder.newTrigger;
 import org.quartz.JobDetail;
 import org.quartz.JobKey;
 import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
 import org.quartz.SchedulerFactory;
 import org.quartz.SimpleTrigger;
 import org.quartz.Trigger;
@@ -43,10 +44,10 @@ import java.util.List;
  * @author Bill Kratzer
  */
 public class CronTriggerExample {
+	 Logger log = LoggerFactory.getLogger(CronTriggerExample.class);
 
     public void run() throws Exception {
-        Logger log = LoggerFactory.getLogger(CronTriggerExample.class);
-
+       
         log.info("------- Initializing ----------------------");
 
         // 定义调度器
@@ -72,7 +73,7 @@ public class CronTriggerExample {
         log.info(job.getKey() + " will run at: " + runTime);
 
         // 启动调度器
-        sched.start();
+        //sched.start();
 
         log.info("------- Started Scheduler -----------------");
 
@@ -86,17 +87,36 @@ public class CronTriggerExample {
 
         // 关闭调度器
         log.info("------- Shutting Down ---------------------");
-        sched.shutdown(true);
+        //sched.shutdown(true);
         log.info("------- Shutdown Complete -----------------");
     }
 
     public static void main(String[] args) throws Exception {
 
         CronTriggerExample example = new CronTriggerExample();
-        example.run();
-        //resumeJob();
+        //example.run();
+        example.start();
     }
     
+    /**
+     * 启动 Scheduler
+     */
+    public void start(){
+		try {
+			log.info("------- Started Scheduler -----------------");
+			//初始化调度器工厂
+	        SchedulerFactory sf = new StdSchedulerFactory();
+	        //初始化调度器
+	        Scheduler sched = sf.getScheduler();
+	        
+	        sched.start();
+	        
+		} catch (SchedulerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
     /**
 	 * 从数据库中找到已经存在的job，并重新开户调度
 	 */

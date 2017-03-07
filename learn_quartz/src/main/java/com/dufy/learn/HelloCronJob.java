@@ -17,13 +17,16 @@
  
 package com.dufy.learn;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+
 
 /**
  * <p>
@@ -36,6 +39,7 @@ public class HelloCronJob implements Job {
 
     private static Logger _log = LoggerFactory.getLogger(HelloCronJob.class);
 
+    private static List<String> list = null;
     /**
      * <p>
      * Empty constructor for job initilization
@@ -63,6 +67,19 @@ public class HelloCronJob implements Job {
     	
         // Say Hello to the World and display the date/time
         _log.info("Hello Cron Trigger World! - " + new Date());
+        try {
+        	  int size = list.size();
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+	        _log.info("Hello Cron size --- ! - " + e.getMessage());
+		}
+      
+        _log.info("Hello Cron end ! - ");
+       
     }
+    
+    
+    
+   
 
 }

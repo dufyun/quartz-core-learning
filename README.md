@@ -25,7 +25,7 @@
 ----------
 
 
-<h3>Quartz专栏系列</h3>
+<h3><a href="http://blog.csdn.net/column/details/14251.html">Quartz专栏系列</a></h3>
 
 <a href="http://blog.csdn.net/u010648555/article/details/54863144" target="_blank">1.Quartz学习——Quartz大致介绍（一）</a>
 

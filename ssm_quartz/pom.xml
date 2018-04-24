@@ -189,16 +189,32 @@
               <version>1.2</version>
           </dependency>
   	<!--单元测试依赖 -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+	  <dependency>
+		  <groupId>junit</groupId>
+		  <artifactId>junit</artifactId>
+		  <version>4.12</version>
+		  <scope>test</scope>
+	  </dependency>
   </dependencies>
   
    <build>
 		<finalName>ssm_quartz</finalName>
+
+	   <resources>
+		   <resource>
+			   <directory>src/main/resources</directory>
+			   <filtering>true</filtering>
+		   </resource>
+			<!--标识src下面xml为resource资源，防止打包出错，读取不到xml文件-->
+		   <resource>
+			   <directory>src/main/java</directory>
+			   <includes>
+				   <include>**/*.xml</include>
+			   </includes>
+			   <filtering>true</filtering>
+		   </resource>
+	   </resources>
+
 		<plugins>
 			
 			<plugin>
@@ -215,27 +231,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.2</version>
-				<configuration>
-					<warName>jobserver</warName>
-					<attachClasses>true</attachClasses>
-					<classesClassifier>api</classesClassifier>
-					<!-- <archiveClasses>true</archiveClasses> -->
-					<webResources>
-						<resource>
-							<directory>src\main\resources</directory>
-							<targetPath>WEB-INF\classes</targetPath>
-							<includes>
-								<include>**</include>
-							</includes>
-						</resource>
-					</webResources>
-				</configuration>
-			</plugin>
-		
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
 				<version>2.4</version>
 			</plugin>
 			<plugin>
@@ -248,7 +243,7 @@
 					<stopPort>9999</stopPort>
 					<reload>manual</reload>
 					<webAppConfig>
-						<contextPath>/ssm_quratz</contextPath>
+						<contextPath>/ssm_quartz</contextPath>
 					</webAppConfig>
 					<connectors>
 						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">

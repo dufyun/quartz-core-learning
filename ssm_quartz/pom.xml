@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.dufy</groupId>
-  <artifactId>ssm</artifactId>
+  <artifactId>ssm_quartz</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>Welcom to ssm_quart demo projet</name>
+  <name>learn ssm_quart demo projet</name>
   <url>http://maven.apache.org</url>
   <properties>
 	<spring.version>4.0.5.RELEASE</spring.version>

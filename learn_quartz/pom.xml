@@ -41,7 +41,7 @@
 		<dependency><!--   Failed to load class "org.slf4j.impl.StaticLoggerBinder". -->
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.0.13</version>
+			<version>1.2.0</version>
 		</dependency>
     <!-- MySql的包 -->
 	<dependency>
